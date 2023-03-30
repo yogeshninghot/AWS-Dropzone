@@ -25,55 +25,7 @@ export const Dropdown = () => {
     const [uploading,setUploading]=useState(false);
     const [uploaded,setUploaded]=useState(false);
     const [fileKey,setFileKey]=useState(false);
-   
-
-  //    const onDrop = useCallback(async (acceptedFiles) => {
-  //   const file = acceptedFiles[0];
-
-  //   if (!file.type.startsWith('video/mp4')) {
-  //     alert('Please select an mp4 file.');
-  //     return;
-  //   }
-
-  //   const params = {
-  //     Bucket: bucketName,
-  //     Key: `${Date.now()}-${file.name}`,
-  //     Body: file,
-  //     ContentType: file.type,
-  //   };
-
-  //   setUploading(true);
-
-  //   s3.upload(params)
-  //     .on('httpUploadProgress', (event) => {
-  //       const progress = Math.round((event.loaded * 100) / event.total);
-  //       setProgess(progress);
-  //     })
-  //     .send((err,data) => {
-  //       if (err) {
-          
-  //         console.log(err)
-  //         console.log("here is data",data)
-  //         alert('Upload failed.');
-  //         setUploading(false);
-  //         return;
-  //       }
-
-  //       setUploaded(true);
-  //       setFileKey(params.Key);
-  //       setUploading(false);
-  //     });
-  // }, []);
-
-  // const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
-  // const reset = () => {
-  //   setUploaded(false);
-  //   setProgess(0);
-  //   setFileKey('');
-  // };
-
-  
+    
 //  onDrop function
    const onDrop = useCallback(async(acceptedFiles) => {
           // aceepet file in arry
@@ -126,10 +78,7 @@ export const Dropdown = () => {
       
      }
 
-
-
-
-  return (
+     return (
     
    
     <div className='container'>
@@ -154,29 +103,7 @@ export const Dropdown = () => {
           <div className="progress" style={{ width: `${progress}%` }}>{progress}%</div>
         </div>
       )}
-      {/* {uploaded?(
-        <div className='player'>
-           <video src={`https://${bucketName}.s3.amazonaws.com/${fileKey}`} controls width="320" height="240" />
-        <h2>Video palyer</h2>
-    </div>
-      ):
-       <div className='dropzone' {...getRootProps()}>
-           <h2>Uplaode Your Mp4 Video to AWS</h2>
-           <h4>Press button or drag & drop file here</h4>
-      <button  className='btn' {...getInputProps} accept="video/mp4"><FaUpload className='icon'/>click to Uplad</button>
-     </div>
-      }
-      //  {/* video play  */}
-      {/* //  {uploading== true&& ( */}
-      {/* //   <div className="progress-bar">
-        
-      //       <div className='progress' style={{width:`${progress}%`}}>
-      //         {progress}%
-      //       </div>
-
-      //   </div> */}
-        
-      {/* //  )}  */} 
+      
 
      
     </div>
