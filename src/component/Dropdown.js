@@ -25,6 +25,7 @@ export const Dropdown = () => {
     const [uploading,setUploading]=useState(false);
     const [uploaded,setUploaded]=useState(false);
     const [fileKey,setFileKey]=useState(false);
+   
 
   //    const onDrop = useCallback(async (acceptedFiles) => {
   //   const file = acceptedFiles[0];
@@ -79,6 +80,7 @@ export const Dropdown = () => {
          const file = acceptedFiles[0];
          if(!file.type.startsWith("video/mp4")){
           alert("Please upload MP4 format file only")
+           
           return
          } 
         //  set params of files
@@ -89,6 +91,8 @@ export const Dropdown = () => {
             ContentType:file.type
           }
          setUploading(true)
+         
+        
       //  upload to s3 bucket
          s3.upload(params).on("httpUploadProgress",(event)=>{
             console.log(event)
@@ -101,12 +105,14 @@ export const Dropdown = () => {
              console.log(err)
              alert("File uplaoded Failed")
              setUploading(false)
+             
              return
             }
              //  last
            setUploaded(true)
-           setFileKey(params.key)
+           setFileKey(params.Key)
            setUploading(false)
+           
          })
        
     }, [])
@@ -127,7 +133,7 @@ export const Dropdown = () => {
     
    
     <div className='container'>
-    <div className="dropzone" {...getRootProps()}>
+    <div className="dropzone"{...getRootProps()}>
         <input {...getInputProps()} accept="video/mp4" />
         {uploaded ? (
           <div>
